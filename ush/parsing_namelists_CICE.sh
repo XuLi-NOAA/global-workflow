@@ -46,7 +46,7 @@ cat > ice_in <<eof
    lonpnt(2)      = -45.
    dbug           = .false.
    histfreq       = 'm','d','h','x','x'
-   histfreq_n     =  0 , 0 , 6 , 1 , 1
+   histfreq_n     =  0 , 0 , 1 , 1 , 1
    hist_avg       = $cice_hist_avg
    history_dir    = './history/'
    history_file   = 'iceh'

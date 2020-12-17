@@ -4,28 +4,33 @@ case:
     #BASE_CPLIC: /scratch2/NCEPDEV/climate/climpara/S2S/IC
 
   settings: 
-    SDATE: 2013-04-01t00:00:00
-    EDATE: 2013-04-01t00:00:00
+    SDATE: 2011-10-01t00:00:00
+    EDATE: 2011-10-01t00:00:00
 
-    onestep: .true.
-    cplmode: nems_orig
-    FRAC_GRID: .false.
     cplwav: .true.
     cplwav2atm: .true.
+    cplmode: nems_orig
+    FRAC_GRID: .false.
+    onestep: .true.
     cplflx: .true.
     print_esmf: .true.
     nems_temp: 'cpld_wave'
     mom6ic_prepared: .false.
-    KEEPDATA: NO
+    KEEPDATA: YES
+    ic_source: coupled_ic
 
   nsst:
-    NST_MODEL: 0
+    NST_MODEL: 2
+    NST_SPINUP: 1
+    NST_RESV: 0
+    ZSEA1: 0
+    ZSEA2: 0
 
   output_settings:
     OCN_INTERVAL: 24
-    FHOUT_GFS: 6
+    FHOUT_GFS: 1
     FHMIN_GFS: 0
-    FHMAX_GFS: 48
+    FHMAX_GFS: 840
     FHMAX_HF_GFS: 0
     FHOUT_HF_GFS: -1
 
@@ -34,8 +39,8 @@ case:
     LEVS: 65
     DELTIM: 450
     SEEDLET: 10
-    CCPP_SUITE: FV3_GFS_v15p2_coupled
-    nst_anl: no
+    CCPP_SUITE: FV3_GFS_v15p2_couplednsst
+    nst_anl: yes
     DO_SKEB: false
     DO_SHUM: false
     DO_SPPT: false

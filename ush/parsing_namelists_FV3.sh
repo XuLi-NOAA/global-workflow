@@ -204,7 +204,7 @@ cat >> input.nml <<EOF
 EOF
 
 
-if [ $CCPP_SUITE = "FV3_GFS_v15p2_coupled" ]; then
+if [ $CCPP_SUITE = "FV3_GFS_v15p2_coupled" -o $CCPP_SUITE = "FV3_GFS_v15p2_couplednsst" ]; then
   cat >> input.nml << EOF
   oz_phys      = .false.
   oz_phys_2015 = .true.

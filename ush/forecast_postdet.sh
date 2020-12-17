@@ -297,7 +297,7 @@ EOF
 	# nstf_name(5) : ZSEA2 (in mm) : 0
 	# nst_anl      : .true. or .false., NSST analysis over lake
 	NST_MODEL=${NST_MODEL:-0}
-	NST_SPINUP=${NST_SPINUP:-0}
+ 	NST_SPINUP=${NST_SPINUP:-0}
 	NST_RESV=${NST_RESV-0}
 	ZSEA1=${ZSEA1:-0}
 	ZSEA2=${ZSEA2:-0}
@@ -586,6 +586,8 @@ MOM6_postdet()
 	# Copy MOM6 fixed files
         $NCP -pf $FIXmom/$OCNRES/* $DATA/INPUT/
 
+        $NCP -pf /work/noaa/da/xli/fix_ufs_nst/fix_mom6/025/interpolate_zgrid_40L-top-enhanced.nc $DATA/INPUT/interpolate_zgrid_40L.nc
+
 	# Copy coupled grid_spec
         $NCP -pf $FIX_DIR/fix_cpl/a${CASE}o${OCNRES}/grid_spec.nc $DATA/INPUT/
 
@@ -638,7 +640,7 @@ MOM6_out()
       	  # copy ocn files
   	  for fhr in $fhrlst; do
 	    export fhr=$fhr
-	    if [[ 10#$fhr -ge 6 ]]; then
+	    if [[ 10#$fhr -ge 0 ]]; then
        	      hh_inc_m=$((10#$FHOUT/2))
 	      hh_inc_o=$((10#$FHOUT  ))
 
@@ -663,9 +665,10 @@ MOM6_out()
 	      export ocnfile=ocn_${year}_${month}_${day}_${hh}.nc
 
 	      echo "$NCP -p $ocnfile $COMOUT/ocn$p_date.$ENSMEM.$IDATE.nc"
+#	      [[ -f $ocnfile ]] $NCP -p $ocnfile $COMOUT/ocn$p_date.$ENSMEM.$IDATE.nc
 	      $NCP -p $ocnfile $COMOUT/ocn$p_date.$ENSMEM.$IDATE.nc
 	      status=$?
-	      [[ $status -ne 0 ]] && exit $status
+#	      [[ $status -ne 0 ]] && exit $status
              
 	    fi
        
@@ -792,7 +795,7 @@ CICE_out()
 	  else
 	    $NCP -p $DATA/history/iceh_`printf "%0.2d" $FHOUT`h.${YYYY}-${MM}-${DD}-`printf "%5.5d" ${SS}`.nc $COMOUT/ice$VDATE.$ENSMEM.$IDATE.nc
 	    status=$?
-	    [[ $status -ne 0 ]] && exit $status
+ 	    [[ $status -ne 0 ]] && exit $status
 	  fi
 
 	done
