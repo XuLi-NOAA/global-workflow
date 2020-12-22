@@ -18,7 +18,8 @@ if [[ ! -d ufs_coupled.fd ]] ; then
     cd ufs_coupled.fd
     #git checkout develop  
     #checkout develop branch feature/ufs_nst_1.0  from 12/21/2020: 
-    git checkout eb4ae5163ed6ddebc8f275e529e8ef733080ecef
+#    git checkout eb4ae5163ed6ddebc8f275e529e8ef733080ecef
+    git checkout ad9a62af62a7170abf052b605c4bded84b232383
     git submodule update --init --recursive
     cd ${topdir}
 else
