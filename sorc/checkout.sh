@@ -14,7 +14,7 @@ echo UFS coupled model checkout ...
 rm -f ${topdir}/checkout-ufs_coupled.log
 
 if [[ ! -d ufs_coupled.fd ]] ; then
-    git clone https://github.com/ufs-community/ufs-weather-model ufs_coupled.fd >> ${topdir}/checkout-ufs_coupled.log 2>&1
+    git clone https://github.com/XuLi-NOAA/ufs-weather-model ufs_coupled.fd >> ${topdir}/checkout-ufs_coupled.log 2>&1
     cd ufs_coupled.fd
     #git checkout develop  
     #checkout develop branch feature/ufs_nst_1.0  from 12/21/2020: 
